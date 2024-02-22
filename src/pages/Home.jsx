@@ -1,12 +1,12 @@
 import React from "react";
 import Navbar from "../components/Navbar";
-import Hero from "../components/Hero";
-import Brands from "../components/Brands";
-import Newest from "../components/Newest";
-import Experience from "../components/Experience";
-import Readourblogs from "../components/Readourblogs";
+import Hero from "../components/Home/Hero";
+import Brands from "../components/Home/Brands";
+import Newest from "../components/Home/Newest";
+import Experience from "../components/Home/Experience";
+import Readourblogs from "../components/Home/Readourblogs";
 import Footer from "../components/Footer";
-import Newsletter from "../components/Newsletter";
+import Newsletter from "../components/Home/Newsletter";
 
 const Home = () => {
   return (
