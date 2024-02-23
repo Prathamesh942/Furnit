@@ -111,7 +111,7 @@ const Product = () => {
       <div className=" flex gap-10 py-10">
         <div className=" flex-[4]">
           <img
-            src="public\assets\img_rectangle1475.png"
+            src="assets\img_rectangle1475.png"
             alt=""
             className=" aspect-square object-cover"
           />
