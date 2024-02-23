@@ -44,7 +44,7 @@ const Filter = () => {
   ];
 
   return (
-    <div className="flex flex-col gap-10 py-20">
+    <div className="flex flex-col gap-10 py-20 sticky top-0 bottom-0">
       <div className=" flex flex-col gap-5">
         <h3 className=" font-semibold">Filter By Price</h3>
         <div className="flex gap-2 justify-between">
@@ -80,7 +80,7 @@ const Filter = () => {
             <div className=" flex w-[40%] flex-col cursor-pointer">
               <div
                 key={color.name}
-                className=" h-[30px]  text-xs p-2 rounded-lg border border-zinc-800"
+                className=" h-[40px] w-[40px]  text-xs p-2 rounded-full border border-zinc-800"
                 style={{ background: color.hex }}
                 onClick={() => {
                   handleColorChange(color.hex);
