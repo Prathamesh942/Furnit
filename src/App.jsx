@@ -4,6 +4,7 @@ import Checkout from "./pages/Checkout";
 import Home from "./pages/Home";
 import Product from "./pages/Product";
 import Shop from "./pages/Shop";
+import Wishlist from "./pages/Wishlist";
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
       {/* <Shop /> */}
       {/* <Product /> */}
       {/* <Cart /> */}
-      <Checkout />
+      {/* <Checkout /> */}
+      <Wishlist />
     </div>
   );
 }

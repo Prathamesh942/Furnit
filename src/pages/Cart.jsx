@@ -18,7 +18,7 @@ const cartdata = [
   },
 ];
 
-const ProductInCart = ({ data, onadd }) => {
+export const ProductInCart = ({ data, onadd }) => {
   const [count, setCount] = useState(data.quantity);
   console.log(data);
   return (
