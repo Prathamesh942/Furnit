@@ -145,7 +145,7 @@ const Product = () => {
               Add to cart
             </button>
             <button className=" p-2 border border-black">
-              <img src="public\assets\img_favorite.svg" alt="" />
+              <img src="assets\img_favorite.svg" alt="" />
             </button>
           </div>
         </div>

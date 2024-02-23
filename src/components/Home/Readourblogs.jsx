@@ -36,12 +36,12 @@ const Readourblogs = () => {
               <div className=" w-[30%] flex flex-col gap-4">
                 <img
                   className=" aspect-square"
-                  src="public\assets\img_rectangle18.png"
+                  src="assets\img_rectangle18.png"
                   alt=""
                 />
                 <h2 className=" text-xl font-semibold">{blog.title}</h2>
                 <span className=" flex">
-                  <img src="public\assets\img_calendar.svg" alt="" />
+                  <img src="assets\img_calendar.svg" alt="" />
                   {blog.date}
                 </span>
                 <p>{blog.info}</p>

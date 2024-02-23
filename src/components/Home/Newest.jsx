@@ -57,7 +57,7 @@ const Newest = () => {
           return (
             <div className=" w-[23%] my-5 relative">
               <img
-                src="public\assets\img_image_1.png"
+                src="assets\img_image_1.png"
                 alt=""
                 className=" w-[100%] aspect-[3/4] object-cover"
               />

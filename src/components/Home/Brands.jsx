@@ -9,28 +9,28 @@ const Brands = () => {
         </span>
         <div className=" flex justify-between gap-10">
           <img
-            src="public\assets\img_companylogocompany109_gray_53_48x132.svg"
+            src="assets\img_companylogocompany109_gray_53_48x132.svg"
             alt=""
             className=" w-24"
           />
           <img
-            src="public\assets\img_companylogocompany109_gray_53_48x134.svg"
+            src="assets\img_companylogocompany109_gray_53_48x134.svg"
             alt=""
             className=" w-24"
           />
           <img
-            src="public\assets\img_companylogocompany109_gray_53_48x141.svg"
+            src="assets\img_companylogocompany109_gray_53_48x141.svg"
             alt=""
             className=" w-24"
           />
           <img
             className=" w-24"
-            src="public\assets\img_companylogocompany109_gray_53.svg"
+            src="assets\img_companylogocompany109_gray_53.svg"
             alt=""
           />
           <img
             className=" w-24"
-            src="public\assets\img_companylogocompany109.svg"
+            src="assets\img_companylogocompany109.svg"
             alt=""
           />
         </div>
@@ -48,7 +48,7 @@ const Brands = () => {
           </div>
           <div className=" flex-1 w-[20%] flex  justify-center items-center">
             <img
-              src="public\assets\img_sammoghadamkh.png"
+              src="assets\img_sammoghadamkh.png"
               alt=""
               className=" w-[40%]"
             />
@@ -64,7 +64,7 @@ const Brands = () => {
           </div>
           <div className=" flex-1 flex justify-center items-center">
             <img
-              src="public\assets\img_phildesforges.png"
+              src="assets\img_phildesforges.png"
               alt=""
               className=" w-[40%]"
             />

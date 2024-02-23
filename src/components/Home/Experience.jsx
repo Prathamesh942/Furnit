@@ -9,7 +9,7 @@ const Experience = () => {
         </p>
         <div className=" flex flex-wrap">
           <div className=" w-[50%]">
-            <img src="public\assets\img_volume.svg" alt="" />
+            <img src="assets\img_volume.svg" alt="" />
             <h3 className=" font-bold">Fast Shipping</h3>
             <p className=" text-sm w-[70%]">
               Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -17,7 +17,7 @@ const Experience = () => {
             </p>
           </div>
           <div className=" w-[50%]">
-            <img src="public\assets\img_lock.svg" alt="" />
+            <img src="assets\img_lock.svg" alt="" />
             <h3 className=" font-bold">Safe Delivery</h3>
             <p className=" text-sm w-[70%]">
               Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -25,7 +25,7 @@ const Experience = () => {
             </p>
           </div>
           <div className=" w-[50%]">
-            <img src="public\assets\img_clock.svg" alt="" />
+            <img src="assets\img_clock.svg" alt="" />
             <h3 className=" font-bold">365 Days Return</h3>
             <p className=" text-sm w-[70%]">
               Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -33,7 +33,7 @@ const Experience = () => {
             </p>
           </div>
           <div className=" w-[50%]">
-            <img src="public\assets\img_call.svg" alt="" />
+            <img src="assets\img_call.svg" alt="" />
             <h3 className=" font-bold">24 hours CS</h3>
             <p className=" text-sm w-[70%]">
               Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -44,7 +44,7 @@ const Experience = () => {
       </div>
       <div className=" flex-1">
         <img
-          src="public\assets\img_rectangle16.png"
+          src="assets\img_rectangle16.png"
           alt=""
           className=" aspect-[5/4] object-cover"
         />

@@ -33,23 +33,23 @@ const Footer = () => {
           <h2 className=" text-xl font-semibold">Follow us</h2>
           <ul className=" flex gap-3">
             <img
-              src="public\assets\img_camera.svg"
+              src="assets\img_camera.svg"
               alt=""
               className=" bg-white p-2 rounded-full"
             />
             <img
               className=" bg-white p-2 rounded-full"
-              src="public\assets\img_facebook.svg"
+              src="assets\img_facebook.svg"
               alt=""
             />
             <img
               className=" bg-white p-2 rounded-full"
-              src="public\assets\img_twitter.svg"
+              src="assets\img_twitter.svg"
               alt=""
             />
             <img
               className=" bg-white p-2 rounded-full"
-              src="public\assets\img_music.svg"
+              src="assets\img_music.svg"
               alt=""
             />
           </ul>

@@ -5,7 +5,7 @@ const Hero = () => {
     <div className=" flex flex-col relative p-10 w-[100%] aspect-[4/1] text-white justify-center items-start gap-4 bg-gradient-to-r from-[#805300]">
       <img
         className=" absolute top-0 left-0 -z-10 w-[100%] h-[100%] object-cover"
-        src="public\assets\img_rectangle28.png"
+        src="assets\img_rectangle28.png"
         alt=""
       />
       <h3>Best Room Decor Items</h3>

@@ -25,7 +25,7 @@ const Newsletter = () => {
         </div>
         <img
           className="flex-1 w-[30%] object-cover"
-          src="public\assets\img_pexelsphotoby.png"
+          src="assets\img_pexelsphotoby.png"
           alt=""
         />
       </div>
