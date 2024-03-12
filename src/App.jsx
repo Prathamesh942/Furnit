@@ -8,6 +8,8 @@ import Shop from "./pages/Shop";
 import Wishlist from "./pages/Wishlist";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import store from "./App/store";
+import { Provider } from "react-redux";
 
 const router = createBrowserRouter([
   {
@@ -45,7 +47,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  );
 }
 
 export default App;

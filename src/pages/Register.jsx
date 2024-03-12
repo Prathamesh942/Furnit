@@ -1,7 +1,31 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/api/user/register",
+        {
+          name,
+          email,
+          password,
+        }
+      );
+      console.log("registered successfully:", response);
+      navigate("/login");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className=" px-[6vw] flex justify-center items-center w-screen h-screen bg-[#feefe0]">
       <div className=" w-[70%] aspect-video rounded-xl flex shadow-2xl">
@@ -18,15 +42,32 @@ const Register = () => {
             <form className=" flex flex-col w-[50%] space-y-4 min-w-[200px]">
               <input
                 className=" px-4 py-2 border border-gray-300 rounded-md"
+                type="text"
+                placeholder="Name"
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
+              />
+              <input
+                className=" px-4 py-2 border border-gray-300 rounded-md"
                 type="email"
                 placeholder="Email"
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
               />
               <input
                 className=" px-4 py-2 border border-gray-300 rounded-md"
                 type="password"
                 placeholder="Password"
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
               />
-              <button className=" px-4 py-2 bg-black text-white rounded-md">
+              <button
+                className=" px-4 py-2 bg-black text-white rounded-md"
+                onClick={handleRegister}
+              >
                 Register
               </button>
               <span>

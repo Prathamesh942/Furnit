@@ -1,7 +1,25 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const response = await axios.post(
+      "https://furnit-backend.onrender.com/api/user/login",
+      {
+        email,
+        password,
+      }
+    );
+    console.log("logged in successfully:", response);
+    navigate("/");
+  };
   return (
     <div className=" px-[6vw] flex justify-center items-center w-screen h-screen bg-[#feefe0]">
       <div className=" w-[70%] aspect-video rounded-xl flex shadow-2xl">
@@ -20,13 +38,22 @@ const Login = () => {
                 className=" px-4 py-2 border border-gray-300 rounded-md"
                 type="email"
                 placeholder="Email"
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
               />
               <input
                 className=" px-4 py-2 border border-gray-300 rounded-md"
                 type="password"
                 placeholder="Password"
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
               />
-              <button className=" px-4 py-2 bg-black text-white rounded-md">
+              <button
+                className=" px-4 py-2 bg-black text-white rounded-md"
+                onClick={handleLogin}
+              >
                 Login
               </button>
               <span>
