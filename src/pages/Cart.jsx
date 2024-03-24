@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Newsletter from "../components/Home/Newsletter";
 import Footer from "../components/Footer";
@@ -76,6 +76,22 @@ function calculatebill() {
 const Cart = () => {
   const [total, setTotal] = useState(calculatebill());
   const items = useSelector((state) => state.cart.products);
+
+  useEffect(()=>{
+    const handleCart = async (e) => {
+      e.preventDefault();
+      try {
+        const response = await axios.post("http://localhost:8000/api/user/cart",{},{headers:{'Authorization':`Bearer ${getCookie('accessToken')}`}});
+        const { user, accessToken } = response.data.data;
+        document.cookie = "accessToken" + "=" + (accessToken || "")
+        console.log(document.cookie);
+      console.log('User logged in successfully:', user);
+        navigate("/");
+      } catch (error) {
+        console.error("Login failed:", error);
+      }
+    };
+  },[])
   return (
     <div className=" px-[6vw]">
       <Navbar />

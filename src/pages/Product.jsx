@@ -1,15 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
-const product = {
-  heading: "Complete set of sofa, pillows and bed sheets",
-  price: 75,
-  stock: 18,
-  category: "chair",
-  description:
-    "In order to sit comfortably for long periods, people need freedom of movement. The Form rocking chair has a molded plastic shell with a wide, curved seat, which gives plenty of opportunity for changing one’s sitting position.",
-};
 
 const reviews = [
   {
@@ -104,23 +98,45 @@ const WriteReviws = () => {
 };
 
 const Product = () => {
+  const { productId: id } = useParams();
+  const [product, setProduct] = useState(null); 
+  const [loading, setLoading] = useState(true);
   const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get(`http://localhost:8000/api/product/products/${id}`);
+        setProduct(response.data.data); // Set the product data in state
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching product:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchProduct(); // Call the function to fetch product data
+  }, []);
+
+  if(loading) return <div>Loading</div>
+
   return (
     <div className=" px-[6vw]">
       <Navbar />
       <div className=" flex gap-10 py-10">
         <div className=" flex-[4]">
           <img
-            src="assets\img_rectangle1475.png"
+            src={product.productImg}
             alt=""
             className=" aspect-square object-cover"
           />
         </div>
         <div className=" flex-[6] w-[100%] flex flex-col gap-5 items-start">
-          <h2 className=" text-xl font-semibold">{product.heading}</h2>
+          <h2 className=" text-xl font-semibold">{product.name}</h2>
           <span>stars</span>
           <span>{product.price}$</span>
-          <span>Stock : {product.stock}</span>
+          <span>Stock : {product.quantity}</span>
           <span>Category : {product.category}</span>
           <p className=" w-[70%]">{product.description}</p>
           <div className=" flex gap-5">

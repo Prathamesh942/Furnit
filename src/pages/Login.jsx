@@ -10,16 +10,21 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const response = await axios.post(
-      "https://furnit-backend.onrender.com/api/user/login",
-      {
+    try {
+      const response = await axios.post("http://localhost:8000/api/user/login", {
         email,
         password,
-      }
-    );
-    console.log("logged in successfully:", response);
-    navigate("/");
+      });
+      const { user, accessToken } = response.data.data;
+      document.cookie = "accessToken" + "=" + (accessToken || "")
+      console.log(document.cookie);
+    console.log('User logged in successfully:', user);
+      navigate("/");
+    } catch (error) {
+      console.error("Login failed:", error);
+    }
   };
+  
   return (
     <div className=" px-[6vw] flex justify-center items-center w-screen h-screen bg-[#feefe0]">
       <div className=" w-[70%] aspect-video rounded-xl flex shadow-2xl">

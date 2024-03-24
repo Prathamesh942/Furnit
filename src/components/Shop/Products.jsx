@@ -1,74 +1,11 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../Features/cartSlice";
+import { useNavigate } from "react-router-dom";
 
-const products = [
-  {
-    id: 1,
-    img: `assets\img_image_10.png`,
-    name: "Teak wood chair",
-    tag: "Living Room",
-    price: 24,
-  },
-  {
-    id: 2,
-    img: `assets\img_image_10.png`,
-    name: "Teak wood chair",
-    tag: "Living Room",
-    price: 24,
-  },
-  {
-    id: 3,
-    img: `assets\img_image_10.png`,
-    name: "Teak wood chair",
-    tag: "Living Room",
-    price: 24,
-  },
-  {
-    id: 4,
-    img: `assets\img_image_10.png`,
-    name: "Teak wood chair",
-    tag: "Living Room",
-    price: 24,
-  },
-  {
-    id: 5,
-    img: `assets\img_image_10.png`,
-    name: "Teak wood chair",
-    tag: "Living Room",
-    price: 24,
-  },
-  {
-    id: 6,
-    img: `assets\img_image_10.png`,
-    name: "Teak wood chair",
-    tag: "Living Room",
-    price: 24,
-  },
-  {
-    id: 7,
-    img: `assets\img_image_10.png`,
-    name: "Teak wood chair",
-    tag: "Living Room",
-    price: 24,
-  },
-  {
-    id: 8,
-    img: `assets\img_image_10.png`,
-    name: "Teak wood chair",
-    tag: "Living Room",
-    price: 24,
-  },
-  {
-    id: 9,
-    img: `assets\img_image_10.png`,
-    name: "Teak wood chair",
-    tag: "Living Room",
-    price: 24,
-  },
-];
 
-const Products = () => {
+const Products = ({products}) => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   return (
     <div className=" w-[100%] flex flex-wrap py-20 justify-between gap-10 gap-y-10">
@@ -76,9 +13,12 @@ const Products = () => {
         return (
           <div className=" flex flex-col w-[25%] relative gap-2">
             <img
-              src="assets\img_image_10.png"
+              src={item.productImg}
               alt=""
               className=" w-[100%] aspect-[5/6] object-cover rounded-md"
+              onClick={()=>{
+                navigate(`/product/${item.sku}`)
+              }}
             />
             <div className=" flex justify-between">
               <span className=" font-semibold">{item.name}</span>
