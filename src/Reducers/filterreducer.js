@@ -14,5 +14,10 @@ export function filterreducer(state, action) {
       nwstate.category = action.category;
       return nwstate;
     }
+    case "reset": {
+      nwstate.category = "none";
+      nwstate.color = "none";
+      return nwstate;
+    }
   }
 }

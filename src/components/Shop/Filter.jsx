@@ -1,13 +1,16 @@
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { filterreducer } from "../../Reducers/filterreducer";
 import ReactSlider from "react-slider";
 
-const Filter = () => {
+const Filter = ({onFilterChange}) => {
   const [filter, dispatch] = useReducer(filterreducer, {
     priceRange: { min: 0, max: 1000 },
     color: "none",
     category: "none",
   });
+  useEffect(()=>{
+    onFilterChange(filter);
+  },[filter])
 
   console.log(filter);
 
@@ -23,28 +26,28 @@ const Filter = () => {
     dispatch({ type: "category", category });
   }
 
+  function handleReset(){
+    dispatch({type: "reset"})
+  }
+
   const furnitureColors = [
-    { name: "Ivory", hex: "#FFFFF0" },
-    { name: "Espresso", hex: "#2A140E" },
-    { name: "Charcoal", hex: "#36454F" },
-    { name: "Sandstone", hex: "#CDB79E" },
-    { name: "Mahogany", hex: "#4E2728" },
-    { name: "Navy", hex: "#000080" },
-    { name: "Sage", hex: "#9AB973" },
-    { name: "Ruby", hex: "#E0115F" },
+    { name: "ivory", hex: "#FFFFF0" },
+    { name: "espresso", hex: "#2A140E" },
+    { name: "charcoal", hex: "#36454F" },
+    { name: "sandstone", hex: "#CDB79E" },
+    { name: "mahogany", hex: "#4E2728" },
+    { name: "navy", hex: "#000080" },
+    { name: "sage", hex: "#9AB973" },
+    { name: "ruby", hex: "#E0115F" },
   ];
 
   const furnitureCategories = [
-    "Chair",
-    "Lamp",
-    "Table",
-    "Sofa",
-    "Clock",
-    "Pillow",
+    'Sofas', 'Chairs', 'Tables', 'Beds', 'Desks', 'Cabinets', 'Shelves'
   ];
 
   return (
     <div className="flex flex-col gap-10 py-20 sticky top-0 bottom-0">
+      <button className=" border rounded-lg border-zinc-600 p-2" onClick={()=>{handleReset()}}>Clear filters</button>
       <div className=" flex flex-col gap-5">
         <h3 className=" font-semibold">Filter By Price</h3>
         <div className="flex gap-2 justify-between">
@@ -83,7 +86,7 @@ const Filter = () => {
                 className=" h-[40px] w-[40px]  text-xs p-2 rounded-full border border-zinc-800"
                 style={{ background: color.hex }}
                 onClick={() => {
-                  handleColorChange(color.hex);
+                  handleColorChange(color.name);
                 }}
               ></div>
               <span className=" text-xs">{color.name}</span>
