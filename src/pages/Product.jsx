@@ -167,8 +167,8 @@ const Product = () => {
         </div>
       </div>
       <div className=" flex gap-20">
-        <Reviews />
-        <WriteReviws />
+        {/* <Reviews />
+        <WriteReviws /> */}
       </div>
       <Footer />
     </div>
