@@ -71,8 +71,10 @@ const Navbar = () => {
             : "max-sm:hidden"
         }`}
       >
-        <ul className=" flex flex-col gap-4">
-        <li>Shop</li>
+        <ul className=" flex flex-col gap-4 md:hidden">
+        <Link to="/shop">
+          <li>Shop</li>
+        </Link>
         <li>Blog</li>
         <li>About</li>
         <li>Contact</li>
