@@ -80,7 +80,7 @@ const Filter = ({onFilterChange}) => {
         <h3 className=" font-semibold">Filter By Color</h3>
         <div className="w-[100%] flex flex-wrap justify-between px-5 gap-2">
           {furnitureColors.map((color) => (
-            <div className=" flex w-[40%] flex-col cursor-pointer">
+            <div className=" flex w-[40%] flex-col cursor-pointer max-md:w-[20%]">
               <div
                 key={color.name}
                 className=" h-[40px] w-[40px]  text-xs p-2 rounded-full border border-zinc-800"

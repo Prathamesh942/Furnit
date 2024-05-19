@@ -8,10 +8,10 @@ const Products = ({products}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   return (
-    <div className=" w-[100%] flex flex-wrap py-20 justify-between gap-10 gap-y-10">
+    <div className=" w-[100%] flex flex-wrap py-20 justify-between gap-10 gap-y-10 max-md:py-0">
       {products.map((item) => {
         return (
-          <div className=" flex flex-col w-[25%] relative gap-2">
+          <div className=" flex flex-col w-[25%] relative gap-2 max-md:w-[32%]">
             <img
               src={item.productImg}
               alt=""
@@ -20,7 +20,7 @@ const Products = ({products}) => {
                 navigate(`/product/${item.sku}`)
               }}
             />
-            <div className=" flex justify-between">
+            <div className=" flex justify-between max-md:flex-col">
               <span className=" font-semibold">{item.name}</span>
               <span>{item.price}$</span>
             </div>

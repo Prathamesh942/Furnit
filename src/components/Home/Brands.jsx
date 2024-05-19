@@ -2,7 +2,7 @@ import React from "react";
 
 const Brands = () => {
   return (
-    <div className=" flex flex-col gap-5 py-10">
+    <div className=" flex flex-col gap-5 py-10 max-md:hidden">
       <div className=" w-[100%] bg-zinc-900 flex justify-center gap-5 flex-col items-center p-4">
         <span className="text-white">
           Various brands have used our products

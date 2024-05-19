@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className=" bg-zinc-900 flex flex-col text-white gap-10 p-8">
+    <div className=" bg-zinc-900 flex flex-col text-white gap-10 p-8 max-md:hidden">
       <div className=" flex justify-between gap-10">
         <div className=" flex-1 flex flex-col gap-4">
           <h2 className=" text-xl font-semibold">Furnit.</h2>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -9,6 +9,7 @@ import {useNavigate} from "react-router-dom"
 const Navbar = () => {
 
   const navigate= useNavigate();
+  const [open, setOpen] = useState(false);
   const { user } = useUser();
   const handleLogout = async ()=>{
     try {
@@ -25,7 +26,7 @@ const Navbar = () => {
       <div className=" text-3xl font-semibold">
         <Link to="/">Furnit.</Link>
       </div>
-      <ul className=" w-[60%] max-w-[500px] flex justify-between">
+      <ul className=" w-[60%] max-w-[500px] flex justify-between  max-md:hidden">
         <Link to="/">
           <li>Home</li>
         </Link>
@@ -47,6 +48,37 @@ const Navbar = () => {
         <Link to="/cart">
           <ShoppingCartIcon />
         </Link>
+        <button className="sm:hidden" onClick={() => setOpen(!open)}>
+        <svg
+          className="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M4 8h16M4 12h16M4 16h16"
+          ></path>
+        </svg>
+      </button>
+      <nav
+        className={` flex gap-5 font-medium ${
+          open
+            ? "flex-col absolute right-0 top-16 p-3 bg-white"
+            : "max-sm:hidden"
+        }`}
+      >
+        <ul className=" flex flex-col gap-4">
+        <li>Shop</li>
+        <li>Blog</li>
+        <li>About</li>
+        <li>Contact</li>
+        <li>Team</li>
+        </ul>
+      </nav>
       </ul>
     </div>
   );

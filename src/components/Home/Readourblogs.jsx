@@ -30,10 +30,10 @@ const Readourblogs = () => {
         I need to pay attention to when choosing furniture
       </p>
       <div className=" flex">
-        <div className=" flex justify-between">
+        <div className=" flex justify-between max-md:flex-col">
           {data.map((blog) => {
             return (
-              <div className=" w-[30%] flex flex-col gap-4">
+              <div className=" w-[30%] flex flex-col gap-4 max-md:w-[100%]">
                 <img
                   className=" aspect-square"
                   src="assets\img_rectangle18.png"

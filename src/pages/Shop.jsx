@@ -38,7 +38,7 @@ const Shop = () => {
     <div className=" px-[6vw]">
       <Navbar />
       <Hero />
-      <div className=" w-[100%] flex gap-16 relative">
+      <div className=" w-[100%] flex gap-16 relative max-md:flex-col">
         <div className=" flex-[2]">
           <Filter onFilterChange={handleFilterChange} />
         </div>

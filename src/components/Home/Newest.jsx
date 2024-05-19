@@ -30,7 +30,7 @@ const Newest = () => {
       <div className=" flex flex-wrap gap-[2%] ">
         {data.slice(0,8).map((item) => {
           return (
-            <div className=" w-[23%] my-5 relative">
+            <div className=" w-[23%] my-5 relative max-md:w-[32%] max-sm:w-[48%]">
               <img
                 src={item.productImg}
                 alt=""

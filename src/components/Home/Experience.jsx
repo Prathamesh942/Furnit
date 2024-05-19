@@ -2,7 +2,7 @@ import React from "react";
 
 const Experience = () => {
   return (
-    <div className=" py-10 flex">
+    <div className=" py-10 flex max-md:flex-col">
       <div className=" flex-1 flex flex-col justify-center items-center gap-10">
         <p className=" text-2xl font-medium">
           We guarantee the safety of your shopping

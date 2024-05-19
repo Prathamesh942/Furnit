@@ -6,7 +6,7 @@ const Hero = () => {
   return (
     <div
       className=" flex 
-    bg-[#feefe0]"
+    bg-[#feefe0] max-md:flex-col-reverse"
     >
       <div className=" flex-1 flex flex-col justify-center items-start  gap-10 p-10">
         <span className=" font-semibold">Interior Needs</span>

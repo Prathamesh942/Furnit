@@ -27,8 +27,8 @@ const Register = () => {
   };
 
   return (
-    <div className=" px-[6vw] flex justify-center items-center w-screen h-screen bg-[#feefe0]">
-      <div className=" w-[70%] aspect-video rounded-xl flex shadow-2xl">
+    <div className=" px-[6vw] flex justify-center items-center w-screen h-screen bg-[#feefe0] max-md:flex-col">
+      <div className=" w-[70%] max-md:w-[80%] aspect-video rounded-xl flex shadow-2xl max-md:flex-col">
         <div className=" flex flex-1">
           <img
             className=" w-[100%] object-cover rounded-tl-xl rounded-bl-xl"

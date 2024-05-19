@@ -146,7 +146,7 @@ const Product = () => {
   return (
     <div className=" px-[6vw]">
       <Navbar />
-      <div className=" flex gap-10 py-10">
+      <div className=" flex gap-10 py-10 max-md:flex-col">
         <div className=" flex-[4]">
           <img
             src={product.productImg}
@@ -165,6 +165,9 @@ const Product = () => {
             <div className=" p-2 border border-black flex gap-2 w-20 justify-evenly">
               <button
                 onClick={() => {
+                  if(count==0){
+                    return;
+                  }
                   setCount(count - 1);
                 }}
               >

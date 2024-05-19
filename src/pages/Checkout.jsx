@@ -9,7 +9,7 @@ const Contact = () => {
   return (
     <div className=" flex flex-col gap-5 py-5">
       <h3 className=" text-xl font-semibold">Contact information</h3>
-      <div className=" flex gap-10">
+      <div className=" flex gap-10 max-md:flex-col">
         <div className=" flex flex-col">
           <span>First Name</span>
           <input
@@ -27,7 +27,7 @@ const Contact = () => {
           />
         </div>
       </div>
-      <div className=" flex gap-10">
+      <div className=" flex gap-10 max-md:flex-col">
         <div className=" flex flex-col">
           <span>Phone</span>
           <input
@@ -91,7 +91,7 @@ const Checkout = () => {
       <Navbar />
       <div className=" py-10 flex flex-col items-center">
         <h2 className=" text-3xl font-semibold">Checkout</h2>
-        <div className=" flex justify-center w-[100%]">
+        <div className=" flex justify-center w-[100%] max-md:flex-col">
           <div className=" flex flex-col">
             <Contact />
             <Shipping />

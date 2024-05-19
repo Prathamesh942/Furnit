@@ -31,8 +31,8 @@ const Login = () => {
   
   return (
     <div className=" px-[6vw] flex justify-center items-center w-screen h-screen bg-[#feefe0]">
-      <div className=" w-[70%] aspect-video rounded-xl flex shadow-2xl">
-        <div className=" flex flex-1">
+      <div className=" w-[70%] max-md:w-[80%] aspect-video rounded-xl flex shadow-2xl  max-md:flex-col">
+        <div className=" flex flex-1 max-md:flex-col">
           <img
             className=" w-[100%] object-cover rounded-tl-xl rounded-bl-xl"
             src="https://images.pexels.com/photos/1350789/pexels-photo-1350789.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
