@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 
 const reviews = [
@@ -121,7 +121,13 @@ const Product = () => {
   }, []);
 
   const user = JSON.parse(localStorage.getItem("user"));
-  const userId = user._id;
+  console.log(user);
+  if(user==null){
+    console.log("hii");
+    const navigate = useNavigate();
+    navigate("/register");
+  }
+  const userId = user?._id;
   // const productId = product._id;
   const productId = product?._id;
   const addToCart = async () => {
@@ -183,8 +189,6 @@ const Product = () => {
         </div>
       </div>
       <div className=" flex gap-20">
-        {/* <Reviews />
-        <WriteReviws /> */}
       </div>
       <Footer />
     </div>
