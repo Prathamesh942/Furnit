@@ -12,7 +12,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/user/register",
+        "https://furnit-backend.onrender.com/api/user/register",
         {
           name,
           email,

@@ -127,7 +127,7 @@ const Product = () => {
   const addToCart = async () => {
     try {
       // Make a POST request to the /add endpoint with the product ID
-      await axios.post("http://localhost:8000/api/user/add", { userId, productId});
+      await axios.post("https://furnit-backend.onrender.com/api/user/add", { userId, productId});
       alert("Product added to cart successfully");
     } catch (error) {
       console.error("Error adding product to cart:", error);

@@ -72,7 +72,7 @@ const Checkout = () => {
     try {
       const userId = user._id;
       // Make a POST request to your backend API endpoint for checkout
-      const response = await axios.post('http://localhost:8000/api/user/check', {
+      const response = await axios.post('https://furnit-backend.onrender.com/api/user/check', {
         // Pass any required data for the checkout process, such as user ID or cart items
         userId // Replace 'user_id_here' with the actual user ID
       });

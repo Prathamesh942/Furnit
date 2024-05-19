@@ -44,7 +44,7 @@ export const {
 export const addToCart = (product) => async (dispatch, getState) => {
   try {
     // Call backend API to update the cart
-    await axios.post("/api/cart/add", product);
+    await axios.post("https://furnit-backend.onrender.com/api/cart/add", product);
 
     // Dispatch the success action
     dispatch(addToCartSuccess(product));
@@ -57,7 +57,7 @@ export const addToCart = (product) => async (dispatch, getState) => {
 export const removeFromCart = (productId) => async (dispatch, getState) => {
   try {
     // Call backend API to update the cart
-    await axios.post("/api/cart/remove", { productId });
+    await axios.post("https://furnit-backend.onrender.com/api/cart/remove", { productId });
 
     // Dispatch the success action
     dispatch(removeFromCartSuccess(productId));
@@ -72,7 +72,7 @@ export const fetchCart = () => async (dispatch, getState) => {
   dispatch(fetchCartRequest());
   try {
     // Call backend API to fetch cart data
-    const response = await axios.get("/api/cart");
+    const response = await axios.get("https://furnit-backend.onrender.com/api/cart");
 
     // Dispatch the success action with cart data
     dispatch(fetchCartSuccess(response.data.products));

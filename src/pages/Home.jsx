@@ -19,7 +19,7 @@ const Home = () => {
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`http://localhost:8000/api`);
+        const response = await axios.get(`https://furnit-backend.onrender.com/api`);
         setProduct(response.data.data); // Set the product data in state
         setLoading(false);
         console.log("you are authorized");

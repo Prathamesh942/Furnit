@@ -34,7 +34,7 @@ const Cart = () => {
         console.log(user);
         const userId = user._id;
         console.log(userId);
-        const response = await axios.post("http://localhost:8000/api/user/cart", {userId});
+        const response = await axios.post("https://furnit-backend.onrender.com/api/user/cart", {userId});
         setCartProducts(response.data);
         console.log(response.data);
         setLoading(false);
