@@ -2,11 +2,13 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import {useUser} from "../App/UserContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const { setUser } = useUser();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -17,6 +19,8 @@ const Login = () => {
       });
       const { user, accessToken } = response.data.data;
       document.cookie = "accessToken" + "=" + (accessToken || "")
+      setUser(user);
+      localStorage.setItem("user", JSON.stringify(user));
       console.log(document.cookie);
     console.log('User logged in successfully:', user);
       navigate("/");

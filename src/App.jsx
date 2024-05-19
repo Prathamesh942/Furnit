@@ -5,11 +5,12 @@ import Checkout from "./pages/Checkout";
 import Home from "./pages/Home";
 import Product from "./pages/Product";
 import Shop from "./pages/Shop";
-import Wishlist from "./pages/Wishlist";
+// import Wishlist from "./pages/Wishlist";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import store from "./App/store";
 import { Provider } from "react-redux";
+import { UserProvider } from "./App/UserContext";
 
 const router = createBrowserRouter([
   {
@@ -33,10 +34,6 @@ const router = createBrowserRouter([
     element: <Checkout />,
   },
   {
-    path: "/wishlist",
-    element: <Wishlist />,
-  },
-  {
     path: "/login",
     element: <Login />,
   },
@@ -49,7 +46,9 @@ const router = createBrowserRouter([
 function App() {
   return (
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <UserProvider>
+        <RouterProvider router={router} />
+      </UserProvider>
     </Provider>
   );
 }

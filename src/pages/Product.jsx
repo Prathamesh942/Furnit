@@ -107,7 +107,8 @@ const Product = () => {
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`http://localhost:8000/api/product/products/${id}`);
+        const response = await axios.get(`https://furnit-backend.onrender.com/api/product/products/${id}`);
+        console.log(response, "from render");
         setProduct(response.data.data); // Set the product data in state
         setLoading(false);
       } catch (error) {
@@ -118,6 +119,21 @@ const Product = () => {
 
     fetchProduct(); // Call the function to fetch product data
   }, []);
+
+  const user = JSON.parse(localStorage.getItem("user"));
+  const userId = user._id;
+  // const productId = product._id;
+  const productId = product?._id;
+  const addToCart = async () => {
+    try {
+      // Make a POST request to the /add endpoint with the product ID
+      await axios.post("http://localhost:8000/api/user/add", { userId, productId});
+      alert("Product added to cart successfully");
+    } catch (error) {
+      console.error("Error adding product to cart:", error);
+      alert("Failed to add product to cart");
+    }
+  };
 
   if(loading) return <div>Loading</div>
 
@@ -157,7 +173,7 @@ const Product = () => {
                 +
               </button>
             </div>
-            <button className=" text-white bg-zinc-900 p-2 px-4">
+            <button className=" text-white bg-zinc-900 p-2 px-4" onClick={()=>{addToCart()}}>
               Add to cart
             </button>
             <button className=" p-2 border border-black">
