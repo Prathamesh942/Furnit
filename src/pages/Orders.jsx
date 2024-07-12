@@ -29,7 +29,7 @@ const Orders = () => {
 
   useEffect(() => {
     const getOrders = async () => {
-      const res = await axios.get("http://localhost:8000/api/user/orders", {
+      const res = await axios.get("api/user/orders", {
         withCredentials: true,
       });
       console.log(res);
