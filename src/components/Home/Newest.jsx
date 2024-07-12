@@ -1,23 +1,31 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+import { useNavigate } from "react-router-dom";
 
 const Newest = () => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
   const fetchData = async (filter) => {
     try {
-      const response = await axios.get(`https://furnit-backend.onrender.com/api/product/products`, {params:filter});
+      const response = await axios.get(
+        `https://furnit-backend.onrender.com/api/product/products`,
+        { params: filter }
+      );
       setData(response.data.data);
-      setError(false)
+      setError(false);
     } catch (error) {
-      setError(true)
-      console.error('Error fetching products:', error);
+      setError(true);
+      console.error("Error fetching products:", error);
     }
   };
-  useEffect(()=>{
-    fetchData({category:"none",color:"none",priceRange:{min:0, max:1000}});
-  },[])
+  useEffect(() => {
+    fetchData({
+      category: "none",
+      color: "none",
+      priceRange: { min: 0, max: 1000 },
+    });
+  }, []);
   console.log(data);
   return (
     <div className=" py-10">
@@ -28,13 +36,16 @@ const Newest = () => {
         </p>
       </div>
       <div className=" flex flex-wrap gap-[2%] ">
-        {data.slice(0,8).map((item) => {
+        {data.slice(0, 8).map((item) => {
           return (
             <div className=" w-[23%] my-5 relative max-md:w-[32%] max-sm:w-[48%]">
               <img
                 src={item.productImg}
                 alt=""
                 className=" w-[100%] aspect-[3/4] object-cover"
+                onClick={() => {
+                  navigate(`/product/${item.sku}`);
+                }}
               />
               <span className=" absolute bottom-8 text-white bg-zinc-800 p-2">
                 {item.category}

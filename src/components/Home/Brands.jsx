@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Brands = () => {
+  const navigate = useNavigate();
   return (
     <div className=" flex flex-col gap-5 py-10 max-md:hidden">
       <div className=" w-[100%] bg-zinc-900 flex justify-center gap-5 flex-col items-center p-4">
@@ -42,7 +44,12 @@ const Brands = () => {
             <p className=" text-2xl font-semibold">
               The best foam padded chair
             </p>
-            <button className=" p-3 px-6 text-white border-2 border-white">
+            <button
+              className=" p-3 px-6 text-white border-2 border-white"
+              onClick={() => {
+                navigate(`/shop`);
+              }}
+            >
               Shop Now
             </button>
           </div>
@@ -58,7 +65,12 @@ const Brands = () => {
           <div className=" flex-1 flex flex-col gap-4 justify-center items-start">
             <span>Living Room </span>
             <p className=" text-2xl font-semibold">Latest model chandelier</p>
-            <button className=" p-3 px-6 text-white border-2 border-white">
+            <button
+              className=" p-3 px-6 text-white border-2 border-white"
+              onClick={() => {
+                navigate("/shop");
+              }}
+            >
               Shop Now
             </button>
           </div>

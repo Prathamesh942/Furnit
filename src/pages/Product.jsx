@@ -3,7 +3,8 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-
+import { useDispatch } from "react-redux";
+import { addProductToCart } from "./cart/cartSlice";
 
 const reviews = [
   {
@@ -99,17 +100,21 @@ const WriteReviws = () => {
 
 const Product = () => {
   const { productId: id } = useParams();
-  const [product, setProduct] = useState(null); 
+  const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [count, setCount] = useState(0);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`https://furnit-backend.onrender.com/api/product/products/${id}`);
+        const response = await axios.get(
+          `https://furnit-backend.onrender.com/api/product/products/${id}`
+        );
         console.log(response, "from render");
-        setProduct(response.data.data); // Set the product data in state
+        setProduct(response.data.data);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching product:", error);
@@ -122,7 +127,7 @@ const Product = () => {
 
   const user = JSON.parse(localStorage.getItem("user"));
   console.log(user);
-  if(user==null){
+  if (user == null) {
     console.log("hii");
     const navigate = useNavigate();
     navigate("/register");
@@ -131,17 +136,17 @@ const Product = () => {
   // const productId = product._id;
   const productId = product?._id;
   const addToCart = async () => {
+    console.log(count);
     try {
-      // Make a POST request to the /add endpoint with the product ID
-      await axios.post("https://furnit-backend.onrender.com/api/user/add", { userId, productId});
-      alert("Product added to cart successfully");
+      dispatch(addProductToCart(product, count));
     } catch (error) {
       console.error("Error adding product to cart:", error);
-      alert("Failed to add product to cart");
+      // alert("Failed to add product to cart");
+      return;
     }
   };
 
-  if(loading) return <div>Loading</div>
+  if (loading) return <div>Loading</div>;
 
   return (
     <div className=" px-[6vw]">
@@ -165,7 +170,7 @@ const Product = () => {
             <div className=" p-2 border border-black flex gap-2 w-20 justify-evenly">
               <button
                 onClick={() => {
-                  if(count==0){
+                  if (count == 0) {
                     return;
                   }
                   setCount(count - 1);
@@ -182,7 +187,12 @@ const Product = () => {
                 +
               </button>
             </div>
-            <button className=" text-white bg-zinc-900 p-2 px-4" onClick={()=>{addToCart()}}>
+            <button
+              className=" text-white bg-zinc-900 p-2 px-4"
+              onClick={() => {
+                addToCart();
+              }}
+            >
               Add to cart
             </button>
             <button className=" p-2 border border-black">
@@ -191,8 +201,7 @@ const Product = () => {
           </div>
         </div>
       </div>
-      <div className=" flex gap-20">
-      </div>
+      <div className=" flex gap-20"></div>
       <Footer />
     </div>
   );

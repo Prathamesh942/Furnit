@@ -1,34 +1,37 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import {useUser} from "../App/UserContext";
+import { getUser, login } from "./auth/authSlice";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const { setUser } = useUser();
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
+  const user = useSelector(getUser);
+
+  useEffect(() => {
+    console.log(user);
+    if (user) {
+      navigate("/");
+    }
+  }, [user, navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("https://furnit-backend.onrender.com/api/user/login", {
-        email,
-        password,
-      });
-      const { user, accessToken } = response.data.data;
-      document.cookie = "accessToken" + "=" + (accessToken || "")
-      setUser(user);
-      localStorage.setItem("user", JSON.stringify(user));
-      console.log(document.cookie);
-    console.log('User logged in successfully:', user);
-      navigate("/");
+      setLoading(true);
+      dispatch(login({ email, password }));
+      setLoading(false);
     } catch (error) {
-      console.error("Login failed:", error);
+      setLoading(false);
+      console.log(error);
     }
   };
-  
+
   return (
     <div className=" px-[6vw] flex justify-center items-center w-screen h-screen bg-[#feefe0]">
       <div className=" w-[70%] max-md:w-[80%] aspect-video rounded-xl flex shadow-2xl  max-md:flex-col">
