@@ -15,8 +15,6 @@ import Orders from "./pages/Orders";
 
 axios.defaults.baseURL = "https://furnit-backend.onrender.com";
 
-console.log(response, "from render");
-
 axios.defaults.withCredentials = true;
 
 const router = createBrowserRouter([
