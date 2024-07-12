@@ -11,6 +11,11 @@ import Register from "./pages/Register";
 import store from "./App/store";
 import { Provider } from "react-redux";
 import Cart from "./pages/Cart";
+import Orders from "./pages/Orders";
+
+axios.defaults.baseURL = "https://furnit-backend.onrender.com";
+
+console.log(response, "from render");
 
 axios.defaults.withCredentials = true;
 
@@ -42,6 +47,10 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "/orders",
+    element: <Orders />,
   },
 ]);
 

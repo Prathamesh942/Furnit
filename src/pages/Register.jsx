@@ -11,14 +11,11 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "https://furnit-backend.onrender.com/api/user/register",
-        {
-          name,
-          email,
-          password,
-        }
-      );
+      const response = await axios.post("api/user/register", {
+        name,
+        email,
+        password,
+      });
       console.log("registered successfully:", response);
       navigate("/login");
     } catch (error) {

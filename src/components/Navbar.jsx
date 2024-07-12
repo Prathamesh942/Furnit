@@ -13,6 +13,7 @@ const Navbar = () => {
   const user = useSelector(getUser);
   const isloggedin = useSelector(isLoggedIn);
   const dispatch = useDispatch();
+  const [show, setShow] = useState(false);
   const handleLogout = async () => {
     try {
       localStorage.removeItem("user");
@@ -47,10 +48,28 @@ const Navbar = () => {
             </button>
           </Link>
         ) : (
-          <div className="flex gap-4">
-            <span className=" bg-zinc-800 rounded-full flex items-center justify-center text-white font-bold w-8 h-8">
-              {user?.name ? user?.name[0]?.toUpperCase() : ""}
-            </span>
+          <div className="flex gap-4 justify-center items-center">
+            <div className=" ">
+              <span
+                className=" bg-zinc-800 rounded-full flex items-center justify-center text-white font-bold w-8 h-8"
+                onClick={() => {
+                  setShow(!show);
+                }}
+              >
+                {user?.name ? user?.name[0]?.toUpperCase() : ""}
+              </span>
+              {show && (
+                <span
+                  className=" absolute bg-zinc-800 rounded-lg p-2 m-2 text-white translate-x-[-50%] cursor-pointer"
+                  onClick={() => {
+                    navigate("/orders");
+                  }}
+                >
+                  MY Orders
+                </span>
+              )}
+            </div>
+
             <button
               className=" border border-zinc-800 px-2 py-1 rounded-lg"
               onClick={handleLogout}

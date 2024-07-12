@@ -28,7 +28,7 @@ export const login = (userCredentials) => async (dispatch) => {
   console.log(userCredentials);
   const { email, password } = userCredentials;
   try {
-    const response = await axios.post("http://localhost:8000/api/user/login", {
+    const response = await axios.post("api/user/login", {
       email,
       password,
     });

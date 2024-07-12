@@ -110,9 +110,7 @@ const Product = () => {
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(
-          `https://furnit-backend.onrender.com/api/product/products/${id}`
-        );
+        const response = await axios.get(`api/product/products/${id}`);
         console.log(response, "from render");
         setProduct(response.data.data);
         setLoading(false);

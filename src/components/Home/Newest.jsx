@@ -8,10 +8,9 @@ const Newest = () => {
   const navigate = useNavigate();
   const fetchData = async (filter) => {
     try {
-      const response = await axios.get(
-        `https://furnit-backend.onrender.com/api/product/products`,
-        { params: filter }
-      );
+      const response = await axios.get(`api/product/products`, {
+        params: filter,
+      });
       setData(response.data.data);
       setError(false);
     } catch (error) {

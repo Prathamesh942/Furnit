@@ -1,15 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
-import { removeProductFromCart, selectCartItems } from "./cart/cartSlice";
-
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Newsletter from "../components/Home/Newsletter";
 import Footer from "../components/Footer";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Single = ({ data }) => {
-  const dispatch = useDispatch();
   console.log(data);
   return (
     <div className=" flex gap-8 h-[100px] items-center border p-2 border-zinc-400">
@@ -23,29 +19,33 @@ const Single = ({ data }) => {
         <span>${data.product.price}</span>
       </div>
       <span>Quantity: {data.quantity}</span>
-      <button
-        className=" bg-red-500 p-2 rounded-lg text-white"
-        onClick={() => {
-          dispatch(removeProductFromCart(data.product._id));
-        }}
-      >
-        Remove from cart
-      </button>
     </div>
   );
 };
 
-const Cart = () => {
+const Orders = () => {
   const [loading, setLoading] = useState(true);
+  const [order, setOrder] = useState([]);
 
-  const cart = useSelector(selectCartItems);
-  console.log(cart);
+  useEffect(() => {
+    const getOrders = async () => {
+      const res = await axios.get("http://localhost:8000/api/user/orders", {
+        withCredentials: true,
+      });
+      console.log(res);
+      setOrder(res.data.order);
+      console.log(res);
+    };
+    getOrders();
+  }, []);
+
+  console.log(order);
   return (
     <div className=" px-[6vw]">
       <Navbar />
-      {cart.length ? (
+      {order.length ? (
         <>
-          {cart.map((data) => {
+          {order.map((data) => {
             return (
               <>
                 <Single data={data} />
@@ -59,7 +59,7 @@ const Cart = () => {
           src="https://i.pinimg.com/736x/f9/31/46/f931468e3e964288f44f74bf060aadde.jpg"
         />
       )}
-      {cart.length ? (
+      {order.length ? (
         <button className=" m-10 border border-zinc-800 px-2 py-1 rounded-lg">
           <Link to={"/checkout"}>Checkout</Link>
         </button>
@@ -72,4 +72,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default Orders;

@@ -14,18 +14,24 @@ const Shop = () => {
 
   const fetchData = async (filter) => {
     try {
-      const response = await axios.get(`https://furnit-backend.onrender.com/api/product/products`, {params:filter});
-      console.log(response,"from render");
+      const response = await axios.get(`api/product/products`, {
+        params: filter,
+      });
+      console.log(response, "from render");
       setData(response.data.data);
-      setError(false)
+      setError(false);
     } catch (error) {
-      setError(true)
-      console.error('Error fetching products:', error);
+      setError(true);
+      console.error("Error fetching products:", error);
     }
   };
 
   useEffect(() => {
-    fetchData({category:"none",color:"none",priceRange:{min:0, max:1000}});
+    fetchData({
+      category: "none",
+      color: "none",
+      priceRange: { min: 0, max: 1000 },
+    });
     console.log(data);
   }, []);
 
@@ -43,7 +49,11 @@ const Shop = () => {
           <Filter onFilterChange={handleFilterChange} />
         </div>
         <div className=" flex-[8]">
-          {error==true ? <img src="https://i.pinimg.com/736x/65/2b/1d/652b1d4c0af96bca477945270a12c169.jpg"></img> : <Products products={data} />}
+          {error == true ? (
+            <img src="https://i.pinimg.com/736x/65/2b/1d/652b1d4c0af96bca477945270a12c169.jpg"></img>
+          ) : (
+            <Products products={data} />
+          )}
         </div>
       </div>
       <Newsletter />

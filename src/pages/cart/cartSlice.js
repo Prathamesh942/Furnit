@@ -39,7 +39,7 @@ export const addProductToCart = (product, quantity) => async (dispatch) => {
   try {
     dispatch(setStatus("loading"));
     const res = await axios.post(
-      "http://localhost:8000/api/user/add",
+      "api/user/add",
       {
         productId: product._id,
         quantity,
@@ -61,7 +61,7 @@ export const addProductToCart = (product, quantity) => async (dispatch) => {
 export const fetchCartProducts = (userId) => async (dispatch) => {
   try {
     dispatch(setStatus("loading"));
-    const response = await axios.get(`http://localhost:8000/api/user/cart`);
+    const response = await axios.get(`api/user/cart`);
     console.log(response.data);
     dispatch(setCart(response.data));
     dispatch(setStatus("succeeded"));
@@ -75,7 +75,7 @@ export const fetchCartProducts = (userId) => async (dispatch) => {
 export const removeProductFromCart = (productId) => async (dispatch) => {
   try {
     dispatch(setStatus("loading"));
-    await axios.delete(`http://localhost:8000/api/user/remove`, {
+    await axios.delete(`api/user/remove`, {
       data: { productId },
       withCredentials: true,
     });

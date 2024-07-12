@@ -12,26 +12,26 @@ import { useParams } from "react-router-dom";
 
 const Home = () => {
   const { productId: id } = useParams();
-  const [product, setProduct] = useState(null); 
+  const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`https://furnit-backend.onrender.com/api`);
-        setProduct(response.data.data); // Set the product data in state
+        const response = await axios.get(`api`);
+        setProduct(response.data.data);
         setLoading(false);
         console.log("you are authorized");
       } catch (error) {
         console.error("Error fetching product:", error);
-        
+
         console.log("you are unauthorized");
         setLoading(false);
       }
     };
 
-    fetchProduct(); // Call the function to fetch product data
+    fetchProduct();
   }, []);
   return (
     <div className=" px-[6vw]">
